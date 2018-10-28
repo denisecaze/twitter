@@ -3,7 +3,7 @@ var tweetInput = document.getElementsByClassName("tweet-input")[0];
 var tweetForm = document.getElementsByClassName("tweet-form")[0];
 var charCounter = document.getElementsByClassName("character-counter")[0];
 
-// Habilitar botão
+// Habilitar e desabilitar botão
 tweetInput.addEventListener("keydown", enableButton);
 tweetInput.addEventListener("keyup", enableButton);
 
@@ -12,7 +12,7 @@ function enableButton() {
   tweetButton.style.cursor = "pointer";
   tweetButton.style.opacity = "1";
   tweetInput.addEventListener("keydown", startCounting);
-  tweetInput.addEventListener("keyup", startCounting);
+  tweetInput.addEventListener("keyup", startCounting);  
 }
 
 function disableButton () {
@@ -27,8 +27,15 @@ function startCounting() {
   var typedChar = tweetInput.value.length;
   var remainingChar = charAllowed - typedChar;
   charCounter.textContent = remainingChar;
-  if (typedChar === 0 || !tweetInput.value.trim()) { 
+  if (typedChar >= 120 && typedChar < 130) { 
+    charCounter.style.color = "blue";
+  } else if (typedChar >= 130 && typedChar <= 140) {
+    charCounter.style.color = "red";
+   } else if (typedChar > 140 || typedChar === 0 || !tweetInput.value.trim()) { 
+    charCounter.style.color = "lightgrey";
     disableButton();
+  } else {
+    charCounter.style.color = "black";  
   }
 }
 
