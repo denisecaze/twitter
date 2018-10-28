@@ -152,7 +152,7 @@ body {
   grid-area: feed;
   background-color: white;
   padding: 20px;
-  box-shadow: 0px 3px 6px 6px rgba(75, 136, 179, 0.1); 
+  box-shadow: 0px 3px 6px 6px rgba(75, 136, 179, 0.1);
 }
 
 .feed-title {

@@ -12,7 +12,7 @@ function enableButton() {
   tweetButton.style.cursor = "pointer";
   tweetButton.style.opacity = "1";
   tweetInput.addEventListener("keydown", startCounting);
-  tweetInput.addEventListener("keyup", startCounting);  
+  tweetInput.addEventListener("keyup", startCounting);
 }
 
 function disableButton () {
@@ -31,11 +31,23 @@ function startCounting() {
     charCounter.style.color = "blue";
   } else if (typedChar >= 130 && typedChar <= 140) {
     charCounter.style.color = "red";
-   } else if (typedChar > 140 || typedChar === 0 || !tweetInput.value.trim()) { 
+  } else if (typedChar > 140 || typedChar === 0 || !tweetInput.value.trim()) { 
     charCounter.style.color = "lightgrey";
     disableButton();
   } else {
     charCounter.style.color = "black";  
+  }
+}
+
+// Redimensionar área de texto
+tweetInput.addEventListener("keydown", resize);
+
+function resize() {
+  if (tweetInput.scrollHeight > tweetInput.offsetHeight) {
+    tweetInput.rows += 1;
+  }
+  if (tweetInput.rows > 10) {
+    tweetInput.style.overflow = "auto";
   }
 }
 
