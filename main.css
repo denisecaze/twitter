@@ -13,7 +13,7 @@ body {
   height: 100%;
   background-image: url("images/worn-dots.png");
   background-repeat: repeat;
-  background-color: #e8f5fd;
+  background-color: #e8f5fd; 
 }
 
 .section-border {
@@ -152,7 +152,7 @@ body {
   grid-area: feed;
   background-color: white;
   padding: 20px;
-  box-shadow: 0px 3px 6px 6px rgba(75, 136, 179, 0.1);
+  box-shadow: 0px 3px 6px 6px rgba(75, 136, 179, 0.1); 
 }
 
 .feed-title {

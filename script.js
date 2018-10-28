@@ -40,7 +40,7 @@ function startCounting() {
 }
 
 // Redimensionar área de texto
-tweetInput.addEventListener("keydown", resize);
+tweetInput.addEventListener("keyup", resize);
 
 function resize() {
   if (tweetInput.scrollHeight > tweetInput.offsetHeight) {
@@ -51,25 +51,36 @@ function resize() {
   }
 }
 
+// Gerar data e hora
+function showTime() {
+  var mydate = new Date();
+  var hours = mydate.getHours(); 
+  var minutes = mydate.getMinutes();
+  var formatMinutes = (minutes < 10 ) ? "0" + minutes : minutes;
+  var tweetTime = (hours >= 12) ? hours + ":" + formatMinutes + " PM" : hours + ":" + formatMinutes + " AM";
+  return tweetTime;
+}
+
 // Publicar tweet no feed
 tweetButton.addEventListener("click", submitTweet);
 
 function submitTweet(event) {
   var tweetBox = document.createElement("div");
   var tweetMiniPicture = document.createElement("img");
-  var displayName = document.createElement("span");
+  var displayTime = document.createElement("span");
   var publishedTweet = document.createElement("p");
   var insertFeed = document.getElementsByClassName("feed")[0];
-  displayName.textContent = "@denisecaze";
+  displayTime.textContent = "@denisecaze" + " . " + showTime();
   publishedTweet.textContent = tweetInput.value;
   tweetBox.classList.add("tweet-box");
   tweetMiniPicture.classList.add("mini-picture");
-  displayName.classList.add("display-time-name");
+  displayTime.classList.add("display-time-name");
   publishedTweet.classList.add("published-tweet");
   tweetBox.appendChild(tweetMiniPicture);
-  tweetBox.appendChild(displayName);
+  tweetBox.appendChild(displayTime);
   tweetBox.appendChild(publishedTweet);
   insertFeed.appendChild(tweetBox);
+
   charCounter.textContent = 140;
   tweetForm.reset();
   event.preventDefault();
